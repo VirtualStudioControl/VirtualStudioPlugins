@@ -1,0 +1,2 @@
+# VirtualStudioPlugins
+Some Plugins
