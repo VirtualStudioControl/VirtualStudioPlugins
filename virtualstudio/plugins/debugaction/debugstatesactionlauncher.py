@@ -1,11 +1,9 @@
 import sys
-from typing import Tuple
 
 from config import PLUGIN_DIRECTORY
 from virtualstudio.common.action_manager.actionmanager import registerCategoryIcon
-from virtualstudio.common.structs.action.action_launcher import ActionLauncher, CONTROL_TYPE_BUTTON, UI_TYPE_INVALID
+from virtualstudio.common.structs.action.action_launcher import *
 from virtualstudio.common.tools.icontools import readPNGIcon
-
 
 class DebugActionLauncher(ActionLauncher):
 
@@ -16,7 +14,7 @@ class DebugActionLauncher(ActionLauncher):
     #region Metadata
 
     def getName(self):
-        return "Debug Action (Button)"
+        return "Debug Action (States)"
 
     def getIcon(self):
         return readPNGIcon(PLUGIN_DIRECTORY + "/assets/debug/icons/debug.png")
@@ -34,10 +32,10 @@ class DebugActionLauncher(ActionLauncher):
         return "{}.{}.{}-{}".format(self.getAuthor(), self.getCategory(), self.getName(), self.getVersion())
 
     def allowedControls(self):
-        return [CONTROL_TYPE_BUTTON]
+        return [CONTROL_TYPE_BUTTON, CONTROL_TYPE_IMAGE_BUTTON, CONTROL_TYPE_ROTARY_ENCODER, CONTROL_TYPE_FADER]
 
     def getActionStateCount(self, controlType: str) -> int:
-        return 1
+        return len(controlType)
 
     def getActionUI(self, controlType: str) -> Tuple[str, str]:
         return UI_TYPE_INVALID, ""
