@@ -28,9 +28,6 @@ class DebugActionLauncher(ActionLauncher):
     def getVersion(self):
         return (0,0,1)
 
-    def getID(self):
-        return "{}.{}.{}-{}".format(self.getAuthor(), self.getCategory(), self.getName(), self.getVersion())
-
     def allowedControls(self):
         return [CONTROL_TYPE_BUTTON, CONTROL_TYPE_IMAGE_BUTTON, CONTROL_TYPE_ROTARY_ENCODER, CONTROL_TYPE_FADER]
 

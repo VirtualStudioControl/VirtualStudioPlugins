@@ -2,7 +2,9 @@ import sys
 
 from config import PLUGIN_DIRECTORY
 from virtualstudio.common.action_manager.actionmanager import registerCategoryIcon
+from virtualstudio.common.io import filewriter
 from virtualstudio.common.structs.action.action_launcher import *
+from virtualstudio.common.tools import icontools
 from virtualstudio.common.tools.icontools import readPNGIcon
 
 class DebugActionLauncher(ActionLauncher):
@@ -28,9 +30,6 @@ class DebugActionLauncher(ActionLauncher):
     def getVersion(self):
         return (0,0,1)
 
-    def getID(self):
-        return "{}.{}.{}-{}".format(self.getAuthor(), self.getCategory(), self.getName(), self.getVersion())
-
     def allowedControls(self):
         return [CONTROL_TYPE_BUTTON, CONTROL_TYPE_IMAGE_BUTTON, CONTROL_TYPE_ROTARY_ENCODER, CONTROL_TYPE_FADER]
 
@@ -38,7 +37,9 @@ class DebugActionLauncher(ActionLauncher):
         return 1
 
     def getActionUI(self, controlType: str) -> Tuple[str, str]:
-        return UI_TYPE_INVALID, ""
+        return UI_TYPE_QTUI, \
+               icontools.encodeIconData(
+                   filewriter.readFileBinary(PLUGIN_DIRECTORY + "/assets/debug/widgets/debugwidget1.ui"))
 
     def getActionForControl(self, control):
         pass
