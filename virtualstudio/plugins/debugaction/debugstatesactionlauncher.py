@@ -4,6 +4,11 @@ from config import PLUGIN_DIRECTORY
 from virtualstudio.common.action_manager.actionmanager import registerCategoryIcon
 from virtualstudio.common.structs.action.action_launcher import *
 from virtualstudio.common.tools.icontools import readPNGIcon
+from virtualstudio.plugins.debugaction.actions.button_debug_action import ButtonDebugAction
+from virtualstudio.plugins.debugaction.actions.fader_debug_action import FaderDebugAction
+from virtualstudio.plugins.debugaction.actions.imagebutton_debug_action import ImageButtonDebugAction
+from virtualstudio.plugins.debugaction.actions.rotary_encoder_debug_action import RotaryEncoderDebugAction
+
 
 class DebugActionLauncher(ActionLauncher):
 
@@ -11,6 +16,12 @@ class DebugActionLauncher(ActionLauncher):
         super(DebugActionLauncher, self).__init__()
         registerCategoryIcon(["Debug"], PLUGIN_DIRECTORY + "/assets/debug/icons/debug.png")
 
+        self.ACTIONS = {
+            CONTROL_TYPE_BUTTON: ButtonDebugAction,
+            CONTROL_TYPE_FADER: FaderDebugAction,
+            CONTROL_TYPE_IMAGE_BUTTON: ImageButtonDebugAction,
+            CONTROL_TYPE_ROTARY_ENCODER: RotaryEncoderDebugAction
+        }
     #region Metadata
 
     def getName(self):
@@ -28,16 +39,9 @@ class DebugActionLauncher(ActionLauncher):
     def getVersion(self):
         return (0,0,1)
 
-    def allowedControls(self):
-        return [CONTROL_TYPE_BUTTON, CONTROL_TYPE_IMAGE_BUTTON, CONTROL_TYPE_ROTARY_ENCODER, CONTROL_TYPE_FADER]
-
     def getActionStateCount(self, controlType: str) -> int:
         return len(controlType)
 
     def getActionUI(self, controlType: str) -> Tuple[str, str]:
         return UI_TYPE_INVALID, ""
-
-    def getActionForControl(self, control):
-        pass
-
     #endregion

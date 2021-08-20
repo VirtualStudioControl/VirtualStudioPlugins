@@ -6,12 +6,24 @@ from virtualstudio.common.io import filewriter
 from virtualstudio.common.structs.action.action_launcher import *
 from virtualstudio.common.tools import icontools
 from virtualstudio.common.tools.icontools import readPNGIcon
+from virtualstudio.plugins.debugaction.actions.button_debug_action import ButtonDebugAction
+from virtualstudio.plugins.debugaction.actions.fader_debug_action import FaderDebugAction
+from virtualstudio.plugins.debugaction.actions.imagebutton_debug_action import ImageButtonDebugAction
+from virtualstudio.plugins.debugaction.actions.rotary_encoder_debug_action import RotaryEncoderDebugAction
+
 
 class DebugActionLauncher(ActionLauncher):
 
     def __init__(self):
         super(DebugActionLauncher, self).__init__()
         registerCategoryIcon(["Debug"], PLUGIN_DIRECTORY + "/assets/debug/icons/debug.png")
+
+        self.ACTIONS = {
+            CONTROL_TYPE_BUTTON: ButtonDebugAction,
+            CONTROL_TYPE_FADER: FaderDebugAction,
+            CONTROL_TYPE_IMAGE_BUTTON: ImageButtonDebugAction,
+            CONTROL_TYPE_ROTARY_ENCODER: RotaryEncoderDebugAction
+        }
 
     #region Metadata
 
@@ -30,9 +42,6 @@ class DebugActionLauncher(ActionLauncher):
     def getVersion(self):
         return (0,0,1)
 
-    def allowedControls(self):
-        return [CONTROL_TYPE_BUTTON, CONTROL_TYPE_IMAGE_BUTTON, CONTROL_TYPE_ROTARY_ENCODER, CONTROL_TYPE_FADER]
-
     def getActionStateCount(self, controlType: str) -> int:
         return 1
 
@@ -40,8 +49,4 @@ class DebugActionLauncher(ActionLauncher):
         return UI_TYPE_QTUI, \
                icontools.encodeIconData(
                    filewriter.readFileBinary(PLUGIN_DIRECTORY + "/assets/debug/widgets/debugwidget1.ui"))
-
-    def getActionForControl(self, control):
-        pass
-
     #endregion

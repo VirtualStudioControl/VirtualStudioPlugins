@@ -8,6 +8,7 @@ from virtualstudio.common.structs.action.action_launcher import ActionLauncher, 
     UI_TYPE_QTUI
 from virtualstudio.common.tools import icontools
 from virtualstudio.common.tools.icontools import readPNGIcon
+from virtualstudio.plugins.debugaction.actions.button_debug_action import ButtonDebugAction
 
 
 class DebugActionLauncher(ActionLauncher):
@@ -16,6 +17,9 @@ class DebugActionLauncher(ActionLauncher):
         super(DebugActionLauncher, self).__init__()
         registerCategoryIcon(["Debug"], PLUGIN_DIRECTORY + "/assets/debug/icons/debug.png")
 
+        self.ACTIONS = {
+            CONTROL_TYPE_BUTTON: ButtonDebugAction
+        }
     #region Metadata
 
     def getName(self):
@@ -33,9 +37,6 @@ class DebugActionLauncher(ActionLauncher):
     def getVersion(self):
         return (0,0,1)
 
-    def allowedControls(self):
-        return [CONTROL_TYPE_BUTTON]
-
     def getActionStateCount(self, controlType: str) -> int:
         return 1
 
@@ -43,8 +44,4 @@ class DebugActionLauncher(ActionLauncher):
         return UI_TYPE_QTUI, \
                icontools.encodeIconData(
                    filewriter.readFileBinary(PLUGIN_DIRECTORY + "/assets/debug/widgets/debugwidget1.ui"))
-
-    def getActionForControl(self, control):
-        pass
-
     #endregion
