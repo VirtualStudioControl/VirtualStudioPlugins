@@ -29,7 +29,6 @@ class ImageButtonDebugAction(ImageButtonAction):
 
     def onKeyDown(self):
         print("OnKeyDown")
-        print("parameters:", self.getParams())
         self.nextState()
 
     def onKeyUp(self):

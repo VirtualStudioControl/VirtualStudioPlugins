@@ -1,7 +1,7 @@
-from virtualstudio.common.structs.action.button_action import ButtonAction
+from virtualstudio.common.structs.action.fader_action import FaderAction
 
 
-class FaderDebugAction(ButtonAction):
+class FaderDebugAction(FaderAction):
 
     #region handlers
 

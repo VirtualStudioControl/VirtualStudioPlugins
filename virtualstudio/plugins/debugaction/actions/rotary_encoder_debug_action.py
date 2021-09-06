@@ -1,7 +1,7 @@
-from virtualstudio.common.structs.action.button_action import ButtonAction
+from virtualstudio.common.structs.action.rotary_encoder_action import RotaryEncoderAction
 
 
-class RotaryEncoderDebugAction(ButtonAction):
+class RotaryEncoderDebugAction(RotaryEncoderAction):
 
     #region handlers
 
@@ -29,7 +29,6 @@ class RotaryEncoderDebugAction(ButtonAction):
 
     def onKeyDown(self):
         print("On Key Down")
-        print("parameters:", self.getParams())
 
     def onKeyUp(self):
         print("On Key Up")

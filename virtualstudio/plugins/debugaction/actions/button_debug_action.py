@@ -29,9 +29,9 @@ class ButtonDebugAction(ButtonAction):
 
     def onKeyDown(self):
         print("OnKeyDown")
-        print("parameters:", self.getParams())
 
     def onKeyUp(self):
         print("OnKeyUp")
+        self.nextState()
 
     #endregion
