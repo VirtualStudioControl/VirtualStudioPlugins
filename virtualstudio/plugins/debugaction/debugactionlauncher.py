@@ -2,6 +2,7 @@ import sys
 
 from config import PLUGIN_DIRECTORY
 from virtualstudio.common.action_manager.actionmanager import registerCategoryIcon
+from virtualstudio.common.account_manager.account_manager import registerAccountType
 from virtualstudio.common.io import filewriter
 from virtualstudio.common.structs.action.action_launcher import *
 from virtualstudio.common.tools import icontools
@@ -17,6 +18,7 @@ class DebugActionLauncher(ActionLauncher):
     def __init__(self):
         super(DebugActionLauncher, self).__init__()
         registerCategoryIcon(["Debug"], PLUGIN_DIRECTORY + "/assets/debug/icons/debug.png")
+        registerAccountType("Debugging Account", PLUGIN_DIRECTORY + "/assets/debug/icons/debug.png")
 
         self.ACTIONS = {
             CONTROL_TYPE_BUTTON: ButtonDebugAction,
