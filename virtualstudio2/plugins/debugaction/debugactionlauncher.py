@@ -1,29 +1,39 @@
 import sys
-from typing import Tuple
 
-from config import PLUGIN_DIRECTORY
 from virtualstudio.common.action_manager.actionmanager import registerCategoryIcon
+from virtualstudio.common.account_manager.account_manager import registerAccountType
 from virtualstudio.common.io import filewriter
-from virtualstudio.common.structs.action.action_launcher import ActionLauncher, CONTROL_TYPE_BUTTON, UI_TYPE_INVALID, \
-    UI_TYPE_QTUI
+from virtualstudio.common.structs.action.action_launcher import *
 from virtualstudio.common.tools import icontools
 from virtualstudio.common.tools.icontools import readPNGIcon
-from virtualstudio.plugins.debugaction.actions.button_debug_action import ButtonDebugAction
+from virtualstudio2.plugins.debugaction.actions.button_debug_action import ButtonDebugAction
+from virtualstudio2.plugins.debugaction.actions.fader_debug_action import FaderDebugAction
+from virtualstudio2.plugins.debugaction.actions.imagebutton_debug_action import ImageButtonDebugAction
+from virtualstudio2.plugins.debugaction.actions.rotary_encoder_debug_action import RotaryEncoderDebugAction
 
+from pathlib import Path
 
 class DebugActionLauncher(ActionLauncher):
 
     def __init__(self):
+        global PLUGIN_DIRECTORY
+        PLUGIN_DIRECTORY = str(Path(__file__).resolve().parents[3])
+
         super(DebugActionLauncher, self).__init__()
         registerCategoryIcon(["Debug"], PLUGIN_DIRECTORY + "/assets/debug/icons/debug.png")
+        registerAccountType("Debugging Account", PLUGIN_DIRECTORY + "/assets/debug/icons/debug.png")
 
         self.ACTIONS = {
-            CONTROL_TYPE_BUTTON: ButtonDebugAction
+            CONTROL_TYPE_BUTTON: ButtonDebugAction,
+            CONTROL_TYPE_FADER: FaderDebugAction,
+            CONTROL_TYPE_IMAGE_BUTTON: ImageButtonDebugAction,
+            CONTROL_TYPE_ROTARY_ENCODER: RotaryEncoderDebugAction
         }
+
     #region Metadata
 
     def getName(self):
-        return "Debug Action (Button)"
+        return "Debug Action"
 
     def getIcon(self):
         return readPNGIcon(PLUGIN_DIRECTORY + "/assets/debug/icons/debug.png")

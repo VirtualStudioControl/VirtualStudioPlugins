@@ -1,4 +1,7 @@
+from virtualstudio.common.logging import logengine
 from virtualstudio.common.structs.action.rotary_encoder_action import RotaryEncoderAction
+
+logger = logengine.getLogger()
 
 
 class RotaryEncoderDebugAction(RotaryEncoderAction):
@@ -6,34 +9,34 @@ class RotaryEncoderDebugAction(RotaryEncoderAction):
     #region handlers
 
     def onLoad(self):
-        print("OnLoad")
+        logger.info("OnLoad")
 
     def onAppear(self):
-        print("OnAppear")
+        logger.info("OnAppear")
 
     def onDisappear(self):
-        print("OnDisappear")
+        logger.info("OnDisappear")
 
     def onSettingsGUIAppear(self):
-        print("OnSettingsGUI Appear")
+        logger.info("OnSettingsGUI Appear")
 
     def onSettingsGUIDisappear(self):
-        print("OnSettingsGUI Disappear")
+        logger.info("OnSettingsGUI Disappear")
 
     def onParamsChanged(self, parameters: dict):
-        print("Params Changed")
+        logger.info("Params Changed")
 
     #endregion
 
     # region Hardware Event Handlers
 
     def onKeyDown(self):
-        print("On Key Down")
+        logger.info("On Key Down")
 
     def onKeyUp(self):
-        print("On Key Up")
+        logger.info("On Key Up")
 
     def onRotate(self, value: int):
-        print("On Rotate, value=", value)
+        logger.info("On Rotate, value=", value)
 
     # endregion

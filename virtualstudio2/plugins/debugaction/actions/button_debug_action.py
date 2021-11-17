@@ -1,37 +1,40 @@
+from virtualstudio.common.logging import logengine
 from virtualstudio.common.structs.action.button_action import ButtonAction
 
+
+logger = logengine.getLogger()
 
 class ButtonDebugAction(ButtonAction):
 
     #region handlers
 
     def onLoad(self):
-        print("OnLoad")
+        logger.info("OnLoad")
 
     def onAppear(self):
-        print("OnAppear")
+        logger.info("OnAppear")
 
     def onDisappear(self):
-        print("OnDisappear")
+        logger.info("OnDisappear")
 
     def onSettingsGUIAppear(self):
-        print("OnSettingsGUI Appear")
+        logger.info("OnSettingsGUI Appear")
 
     def onSettingsGUIDisappear(self):
-        print("OnSettingsGUI Disappear")
+        logger.info("OnSettingsGUI Disappear")
 
     def onParamsChanged(self, parameters: dict):
-        print("Params Changed")
+        logger.info("Params Changed")
 
     #endregion
 
     #region Hardware Event Handlers
 
     def onKeyDown(self):
-        print("OnKeyDown")
+        logger.info("OnKeyDown")
 
     def onKeyUp(self):
-        print("OnKeyUp")
+        logger.info("OnKeyUp")
         self.nextState()
 
     #endregion
