@@ -1,6 +1,5 @@
 import sys
 
-from config import PLUGIN_DIRECTORY
 from virtualstudio.common.action_manager.actionmanager import registerCategoryIcon
 from virtualstudio.common.account_manager.account_manager import registerAccountType
 from virtualstudio.common.io import filewriter
@@ -12,10 +11,14 @@ from virtualstudio.plugins.debugaction.actions.fader_debug_action import FaderDe
 from virtualstudio.plugins.debugaction.actions.imagebutton_debug_action import ImageButtonDebugAction
 from virtualstudio.plugins.debugaction.actions.rotary_encoder_debug_action import RotaryEncoderDebugAction
 
+from pathlib import Path
 
 class DebugActionLauncher(ActionLauncher):
 
     def __init__(self):
+        global PLUGIN_DIRECTORY
+        PLUGIN_DIRECTORY = str(Path(__file__).resolve().parents[3])
+
         super(DebugActionLauncher, self).__init__()
         registerCategoryIcon(["Debug"], PLUGIN_DIRECTORY + "/assets/debug/icons/debug.png")
         registerAccountType("Debugging Account", PLUGIN_DIRECTORY + "/assets/debug/icons/debug.png")

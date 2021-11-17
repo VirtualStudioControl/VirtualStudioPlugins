@@ -1,7 +1,6 @@
 import sys
 from typing import Tuple
 
-from config import PLUGIN_DIRECTORY
 from virtualstudio.common.action_manager.actionmanager import registerCategoryIcon
 from virtualstudio.common.io import filewriter
 from virtualstudio.common.structs.action.action_launcher import ActionLauncher, CONTROL_TYPE_BUTTON, UI_TYPE_INVALID, \
@@ -10,10 +9,14 @@ from virtualstudio.common.tools import icontools
 from virtualstudio.common.tools.icontools import readPNGIcon
 from virtualstudio.plugins.debugaction.actions.button_debug_action import ButtonDebugAction
 
+from pathlib import Path
 
 class DebugActionLauncher(ActionLauncher):
 
     def __init__(self):
+        global PLUGIN_DIRECTORY
+        PLUGIN_DIRECTORY = str(Path(__file__).resolve().parents[3])
+
         super(DebugActionLauncher, self).__init__()
         registerCategoryIcon(["Debug"], PLUGIN_DIRECTORY + "/assets/debug/icons/debug.png")
 

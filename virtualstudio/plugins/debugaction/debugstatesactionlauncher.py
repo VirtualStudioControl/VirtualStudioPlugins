@@ -1,6 +1,6 @@
 import sys
+from pathlib import Path
 
-from config import PLUGIN_DIRECTORY
 from virtualstudio.common.action_manager.actionmanager import registerCategoryIcon
 from virtualstudio.common.structs.action.action_launcher import *
 from virtualstudio.common.tools.icontools import readPNGIcon
@@ -14,6 +14,8 @@ class DebugActionLauncher(ActionLauncher):
 
     def __init__(self):
         super(DebugActionLauncher, self).__init__()
+        global PLUGIN_DIRECTORY
+        PLUGIN_DIRECTORY = str(Path(__file__).resolve().parents[3])
         registerCategoryIcon(["Debug"], PLUGIN_DIRECTORY + "/assets/debug/icons/debug.png")
 
         self.ACTIONS = {

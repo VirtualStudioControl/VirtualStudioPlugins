@@ -1,40 +1,42 @@
+from virtualstudio.common.logging import logengine
 from virtualstudio.common.structs.action.fader_action import FaderAction
 
+logger = logengine.getLogger()
 
 class FaderDebugAction(FaderAction):
 
     #region handlers
 
     def onLoad(self):
-        print("OnLoad")
+        logger.info("OnLoad")
 
     def onAppear(self):
-        print("OnAppear")
+        logger.info("OnAppear")
 
     def onDisappear(self):
-        print("OnDisappear")
+        logger.info("OnDisappear")
 
     def onSettingsGUIAppear(self):
-        print("OnSettingsGUI Appear")
+        logger.info("OnSettingsGUI Appear")
 
     def onSettingsGUIDisappear(self):
-        print("OnSettingsGUI Disappear")
+        logger.info("OnSettingsGUI Disappear")
 
     def onParamsChanged(self, parameters: dict):
-        print("Params Changed")
+        logger.info("Params Changed")
 
     #endregion
 
     # region Hardware Event Handlers
 
     def onTouchStart(self):
-        print("onTouchStart")
-        print("parameters:", self.getParams())
+        logger.info("onTouchStart")
+        logger.info("parameters:", self.getParams())
 
     def onTouchEnd(self):
-        print("onTouchEnd")
+        logger.info("onTouchEnd")
 
     def onMove(self, value):
-        print("onMove, value: ", value)
+        logger.info("onMove, value: ", value)
 
     # endregion
