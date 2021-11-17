@@ -6,10 +6,10 @@ from virtualstudio.common.io import filewriter
 from virtualstudio.common.structs.action.action_launcher import *
 from virtualstudio.common.tools import icontools
 from virtualstudio.common.tools.icontools import readPNGIcon
-from virtualstudio.plugins.debugaction.actions.button_debug_action import ButtonDebugAction
-from virtualstudio.plugins.debugaction.actions.fader_debug_action import FaderDebugAction
-from virtualstudio.plugins.debugaction.actions.imagebutton_debug_action import ImageButtonDebugAction
-from virtualstudio.plugins.debugaction.actions.rotary_encoder_debug_action import RotaryEncoderDebugAction
+from virtualstudio2.plugins.debugaction.actions.button_debug_action import ButtonDebugAction
+from virtualstudio2.plugins.debugaction.actions.fader_debug_action import FaderDebugAction
+from virtualstudio2.plugins.debugaction.actions.imagebutton_debug_action import ImageButtonDebugAction
+from virtualstudio2.plugins.debugaction.actions.rotary_encoder_debug_action import RotaryEncoderDebugAction
 
 from pathlib import Path
 

@@ -7,7 +7,7 @@ from virtualstudio.common.structs.action.action_launcher import ActionLauncher, 
     UI_TYPE_QTUI
 from virtualstudio.common.tools import icontools
 from virtualstudio.common.tools.icontools import readPNGIcon
-from virtualstudio.plugins.debugaction.actions.button_debug_action import ButtonDebugAction
+from virtualstudio2.plugins.debugaction.actions.button_debug_action import ButtonDebugAction
 
 from pathlib import Path
 
