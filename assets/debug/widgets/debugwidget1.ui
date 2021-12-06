@@ -14,14 +14,10 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="2" column="0">
-    <widget class="QDateTimeEdit" name="dateTimeEdit">
-     <property name="calendarPopup">
-      <bool>true</bool>
-     </property>
-    </widget>
+   <item row="3" column="2">
+    <widget class="QTimeEdit" name="timeEdit"/>
    </item>
-   <item row="1" column="0" colspan="3">
+   <item row="2" column="0" colspan="3">
     <widget class="QWidget" name="widget" native="true">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -40,6 +36,16 @@
      </property>
     </widget>
    </item>
+   <item row="0" column="1" colspan="2">
+    <widget class="QLineEdit" name="lineEdit"/>
+   </item>
+   <item row="3" column="0">
+    <widget class="QDateTimeEdit" name="dateTimeEdit">
+     <property name="calendarPopup">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
    <item row="0" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
@@ -47,17 +53,38 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="1">
+   <item row="3" column="1">
     <widget class="QDateEdit" name="dateEdit"/>
    </item>
-   <item row="2" column="2">
-    <widget class="QTimeEdit" name="timeEdit"/>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>File:</string>
+     </property>
+    </widget>
    </item>
-   <item row="0" column="1" colspan="2">
-    <widget class="QLineEdit" name="lineEdit"/>
+   <item row="1" column="1" colspan="2">
+    <widget class="FileSelectionButton" name="fileselector">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>...</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>FileSelectionButton</class>
+   <extends>QToolButton</extends>
+   <header>virtualstudio.configurator.ui.widgets.general.file_selection_button</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
